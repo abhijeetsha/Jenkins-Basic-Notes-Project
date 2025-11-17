@@ -161,11 +161,57 @@ pipeline {
     pipeline {
         agent { label 'linux' }
     
-    stages {
-        stage('Build') {
-            steps {
-                sh 'mvn package'
+        stages {
+            stage('Build') {
+                steps {
+                    sh 'mvn package'
+                }
             }
         }
     }
-}
+
+## ✅ What is Jenkins Shared Libraries?
+### Ans: Shared Libraries allow you to write reusable Groovy code or pipeline steps in one common place, and use them across multiple Jenkins pipelines.
+### Why Use Shared Libraries?
+  * DRY (Don’t Repeat Yourself)
+  * Centralized logic for multiple projects
+  * Better maintainability
+  * Standard coding practices
+  * Simplify complex pipelines
+
+## Where Are Shared Libraries Stored?
+### In a Git repository, usually with structure:
+    vars/
+      buildProject.groovy
+      deployApp.groovy
+
+    src/
+      org/company/utils/MyFunction.groovy
+
+    resources/
+      templates/
+
+## Example: Using a Shared Library in Jenkinsfile
+    @Library('my-shared-library') _
+
+    buildProject()
+    deployApp()
+
+## Example Shared Library (var file)
+### vars/buildProject.groovy
+    def call() {
+        stage('Build') {
+            sh 'mvn clean package'
+        }
+    }
+
+## 🔒 What is User Management in Jenkins (Role-Based)?
+### Ans: Jenkins supports RBAC (Role-Based Access Control) using the plugin:
+### ➡ Role-Based Authorization Strategy
+* This allows you to create:
+✔ Users
+✔ Groups
+✔ Roles
+✔ Permissions
+✔ Job-based access
+✔ Folder-level restrictions
