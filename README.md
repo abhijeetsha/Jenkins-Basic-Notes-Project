@@ -158,8 +158,8 @@ pipeline {
 
 ## 🧱 How Jenkins Pipeline Uses Agents
 ### Example:-
-pipeline {
-    agent { label 'linux' }
+    pipeline {
+        agent { label 'linux' }
     
     stages {
         stage('Build') {
