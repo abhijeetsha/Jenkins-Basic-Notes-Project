@@ -98,3 +98,74 @@ pipeline {
         }
     }
 }
+### 🔥 Key Features of Declarative Pipelines
+  * More readable and user friendly
+  * Follows a fixed structure (pipeline → agent → stages → steps)
+  * Easy to validate and debug
+  * Supports automated build, test, deploy sequences
+
+### ⭐ Summary Table
+| Topic                    | Meaning                                          |
+| ------------------------ | ------------------------------------------------ |
+| **Jenkins**              | Automation server for CI/CD                      |
+| **CI/CD Pipeline**       | Automated build, test & deploy process           |
+| **Jenkins UI**           | Web interface of Jenkins                         |
+| **Jenkins Dashboard**    | Homepage showing jobs & status                   |
+| **Jenkins Jobs**         | Tasks that Jenkins runs                          |
+| **Declarative Pipeline** | Code-based structured pipeline using Jenkinsfile |
+
+## ✅ What is a Jenkins Agent (Multi-Node Setup)?
+### Jenkins works on a Master–Agent (Controller–Node) architecture.
+
+## 1. Jenkins Controller (Master)
+  * Main server
+  * Holds Jenkins UI, jobs, plugins 
+  * Controls the entire system
+  * Does not execute heavy workloads ideally
+
+## 2. Jenkins Agent (Node)
+### A Jenkins Agent is a separate machine that performs the actual work (build, test, deploy).
+### Agents can be:
+  * Linux servers
+  * Windows machines
+  * Docker containers
+  * Kubernetes pods
+  * Virtual machines
+
+## ✅ Why Use Multiple Agents (Multi-Nodes)?
+### Multiple agents allow:
+  * Parallel execution of builds
+  * Load balancing
+  * Different environments for different projects
+  * Faster CI/CD
+  * Separation of workloads (e.g., Java builds on Linux, .NET builds on Windows)
+
+### Example:-
+| Agent Name     | OS             | Purpose                    |
+| -------------- | -------------- | -------------------------- |
+| agent-linux-01 | Linux          | Maven/Java builds          |
+| agent-win-01   | Windows        | .NET builds                |
+| agent-docker   | Linux          | Docker image builds        |
+| agent-k8s      | Kubernetes Pod | On-demand ephemeral builds |
+
+## 🔌 How Agents Connect
+### Agents connect to the controller using:
+  * SSH
+  * JNLP
+  * Docker
+  * Kubernetes plugin
+  * Cloud agents (AWS EC2, Azure VM, GCP)
+
+## 🧱 How Jenkins Pipeline Uses Agents
+### Example:-
+pipeline {
+    agent { label 'linux' }
+    
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+    }
+}
