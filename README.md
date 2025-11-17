@@ -215,3 +215,34 @@ pipeline {
 ✔ Permissions
 ✔ Job-based access
 ✔ Folder-level restrictions
+
+## 🔑 How Role-Based Access Control Works
+### 1. Create Users
+  * Users can be added through:
+  * Jenkins → Manage Jenkins → Manage Users → Create User
+
+### 2. Install RBAC Plugin
+* Manage Jenkins → Manage Plugins → Role-based Authorization Strategy
+
+### 3. Create Roles
+* Roles define permissions:
+### Global Roles
+* admin
+* developer
+* viewer
+### Project/Job Roles
+* can-build
+* can-view
+* can-deploy
+### Agent/Node Roles
+* control specific nodes
+
+## 🔐 Common Permissions
+  * Read
+  * Build
+  * Configure
+  * Delete
+  * Administer
+  * Workspace view
+  * Job creation
+  * Node control
